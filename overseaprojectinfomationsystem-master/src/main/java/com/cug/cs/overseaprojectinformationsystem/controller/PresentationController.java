@@ -1,4 +1,4 @@
-package com.cug.cs.overseaprojectinformationsystem.cotroller;
+package com.cug.cs.overseaprojectinformationsystem.controller;
 
 import com.cug.cs.overseaprojectinformationsystem.bean.common.*;
 import com.cug.cs.overseaprojectinformationsystem.dal.entitys.PageBean;
@@ -13,7 +13,6 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URL;

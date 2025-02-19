@@ -1,4 +1,4 @@
-package com.cug.cs.overseaprojectinformationsystem.cotroller;
+package com.cug.cs.overseaprojectinformationsystem.controller;
 
 import com.cug.cs.overseaprojectinformationsystem.bean.common.ResponseData;
 import com.cug.cs.overseaprojectinformationsystem.bean.common.ResponseUtil;

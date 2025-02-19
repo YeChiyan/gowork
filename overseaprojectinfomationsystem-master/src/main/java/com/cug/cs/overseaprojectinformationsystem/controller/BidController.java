@@ -1,4 +1,4 @@
-package com.cug.cs.overseaprojectinformationsystem.cotroller;
+package com.cug.cs.overseaprojectinformationsystem.controller;
 
 
 import com.cug.cs.overseaprojectinformationsystem.bean.common.*;
@@ -7,7 +7,6 @@ import com.cug.cs.overseaprojectinformationsystem.dal.entitys.PageBean;
 import com.cug.cs.overseaprojectinformationsystem.dao.ExcelBidDao;
 import com.cug.cs.overseaprojectinformationsystem.service.BidService;
 import com.cug.cs.overseaprojectinformationsystem.util.BidWayUtil;
-import com.cug.cs.overseaprojectinformationsystem.util.CenterNameutil;
 import com.cug.cs.overseaprojectinformationsystem.util.ExcelUtil;
 import com.cug.cs.overseaprojectinformationsystem.util.PathUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -16,13 +15,11 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

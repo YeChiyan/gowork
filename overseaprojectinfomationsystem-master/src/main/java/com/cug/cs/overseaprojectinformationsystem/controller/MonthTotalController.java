@@ -1,19 +1,16 @@
-package com.cug.cs.overseaprojectinformationsystem.cotroller;
+package com.cug.cs.overseaprojectinformationsystem.controller;
 
 import com.cug.cs.overseaprojectinformationsystem.bean.common.ResponseData;
 import com.cug.cs.overseaprojectinformationsystem.bean.common.ResponseUtil;
 import com.cug.cs.overseaprojectinformationsystem.dal.entitys.*;
 import com.cug.cs.overseaprojectinformationsystem.service.BidService;
-import com.cug.cs.overseaprojectinformationsystem.service.HotNewsService;
 import com.cug.cs.overseaprojectinformationsystem.service.MonthTotalService;
 import com.cug.cs.overseaprojectinformationsystem.util.CenterNameutil;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
