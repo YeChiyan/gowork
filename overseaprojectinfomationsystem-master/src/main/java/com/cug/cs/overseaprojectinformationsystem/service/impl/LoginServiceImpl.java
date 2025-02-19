@@ -135,7 +135,7 @@ public class LoginServiceImpl implements ILoginService {
             createUserWithPhone(loginForm.getPhone());
         }
         //生成 Jwttoken 保存到 redis中
-        String jwtToken = JwtUtil.generateJwtToken(loginForm.getPhone());//这个时候还不知道 username，只能就用 phone 了
+        String jwtToken = JwtUtil.generateToken(loginForm.getPhone());//这个时候还不知道 username，只能就用 phone 了
 //        MemberDto memberDto = new MemberDto();
         MemberDto memberDto = BeanUtil.copyProperties(member, MemberDto.class);// 复制对象属性
 //        Map<String, Object> memberMap = BeanUtil.beanToMap(memberDto,);

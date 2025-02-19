@@ -46,8 +46,27 @@ public class ShiroConfig {
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         //放行请求
         filterChainDefinitionMap.put("/auth/**", "anon");
+        filterChainDefinitionMap.put("/public/**", "anon");
+/*        //管理员接口（需要admin角色）
+        filterChainDefinitionMap.put("/admin/**", "jwt, roles[admin]");
+        //超级管理员接口（需要super-admin角色）
+        filterChainDefinitionMap.put("/superadmin/**", "jwt, roles[super-admin]");
+        //普通用户接口（需要user角色）
+        filterChainDefinitionMap.put("/user/**", "jwt, roles[user]");*/
+        // 管理员接口（需要admin角色）
+        filterChainDefinitionMap.put("/admin/**", "jwt, roles[admin]");
+
+        // 超级管理员接口（需要super-admin角色）
+        filterChainDefinitionMap.put("/superadmin/**", "jwt, roles[superadmin]");
+
+        // 需要user:show权限的接口
+        filterChainDefinitionMap.put("/test/user", "jwt, perms[user:show]");
+//
+//        // 需要user角色的其他接口
+//        filterChainDefinitionMap.put("/user/**", "jwt, roles[user]");
+
         //拦截剩下的其他请求
-        filterChainDefinitionMap.put("/**", "authc");
+        filterChainDefinitionMap.put("/**", "jwt");
         //设置拦截规则给shiro的拦截链工厂
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         // 添加自己的自定义拦截器并且取名为jwt

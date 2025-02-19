@@ -62,7 +62,7 @@ public class AdminRealm extends AuthorizingRealm {
             throw new AuthenticationException("管理员令牌已失效");
         }
 
-        return new SimpleAuthenticationInfo(token, token, "admin");
+        return new SimpleAuthenticationInfo(token, token, getName());
     }
 
     private boolean adminTokenRefresh(String token, String username) {

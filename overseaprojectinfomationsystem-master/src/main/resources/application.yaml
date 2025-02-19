@@ -46,9 +46,17 @@ pagehelper:
 logging:
   level:
     com.cug: debug
+    org.apache.shiro: debug
 #    com.cug: warn
 
 mybatis:
   type-handlers-package: com.cug.cs.overseaprojectinformationsystem.typehandler
   configuration:
     map-underscore-to-camel-case: true
+custom:
+  jwt:
+    tokenHeader: token
+    expire_time: 1800000
+    secret: "oversea"
+#  logging.level.org.apache.shiro=DEBUG
+#  logging.level.com.cug.cs=TRACE

@@ -37,16 +37,18 @@ public class JwtFilter extends BasicHttpAuthenticationFilter implements Filter {
         String token = httpRequest.getHeader("token");
         
         try {
-            // 解析令牌获取权限信息
-            Boolean isAdmin = JwtUtil.isAdminToken(token);
-            Boolean isSuperAdmin = JwtUtil.isSuperAdminToken(token);
-            
-            // 创建对应类型的Token（关键修改点）
-            JwtToken jwtToken = new JwtToken(token, isAdmin, isSuperAdmin);
-            
-            // 提交给Shiro进行认证（会自动路由到对应Realm）
-            getSubject(request, response).login(jwtToken);
-            return true;
+             // 解析token获取用户类型
+        boolean isAdmin = JwtUtil.isAdminToken(token);
+        boolean isSuperAdmin = JwtUtil.isSuperAdminToken(token);
+        
+        // 创建token时设置正确的标志
+        JwtToken jwtToken = new JwtToken(token, isAdmin, isSuperAdmin);
+        
+        // 添加调试日志
+        log.debug("Token信息 - isAdmin: {}, isSuperAdmin: {}", isAdmin, isSuperAdmin);
+        
+        getSubject(request, response).login(jwtToken);
+        return true;
         } catch (Exception e) {
             // 统一异常处理
             HttpServletResponse httpResponse = (HttpServletResponse) response;

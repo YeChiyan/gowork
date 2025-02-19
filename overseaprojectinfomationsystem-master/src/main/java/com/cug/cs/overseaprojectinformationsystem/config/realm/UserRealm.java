@@ -1,4 +1,3 @@
-
 package com.cug.cs.overseaprojectinformationsystem.config.realm;
 
 import com.cug.cs.overseaprojectinformationsystem.config.JwtToken;
@@ -40,7 +39,13 @@ public class UserRealm extends AuthorizingRealm {
 
     @Override
     public boolean supports(AuthenticationToken token) {
-        return  token instanceof JwtToken;
+        // 确保能处理JwtToken类型
+        if (!(token instanceof JwtToken)) {
+            return false;
+        }
+        JwtToken jwtToken = (JwtToken) token;
+        // 普通用户的token：既不是admin也不是superAdmin
+        return !jwtToken.isAdmin() && !jwtToken.isSuperAdmin();
     }
 
     //权限认证
@@ -54,11 +59,13 @@ public class UserRealm extends AuthorizingRealm {
 //        if (!"Coco".equals(username)) {
 //            return null;
 //        }
+
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         HashSet<String> set = new HashSet<>();
         set.add("user:show");
         set.add("user:admin");
         info.setStringPermissions(set);
+        log.info("用户ID {} 拥有权限：{}", token, info.getStringPermissions());
         return info;
     }
 
@@ -86,7 +93,7 @@ public class UserRealm extends AuthorizingRealm {
         //返回身份认证信息
         //理论上应该把密码设置进去
 //        return new SimpleAuthenticationInfo(token, "123", "UserRealm");
-        return new SimpleAuthenticationInfo(token, token, "user");
+        return new SimpleAuthenticationInfo(token, token, getName());
     }
 
     public boolean jwtTokenRefresh(String token, String userName) {
