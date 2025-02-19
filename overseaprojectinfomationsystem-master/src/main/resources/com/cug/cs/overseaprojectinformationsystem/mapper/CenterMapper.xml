@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--写接口的相对路径，接口里面写需要实现的方法-->
+<mapper namespace="com.cug.cs.overseaprojectinformationsystem.mapper.CenterMapper">
+    <select id="selectCenterByCenterId" resultType="integer">
+        select count(*)
+        from system_center
+        where id = #{id}
+    </select>
+
+    <select id="selectCenterList" resultType="com.cug.cs.overseaprojectinformationsystem.dal.entitys.Center">
+        select id, center_name as centerName, address, leader, department, role_ids as roleId
+        from system_center
+        where deleted = 1
+    </select>
+
+    <insert id="insertNewCenter" parameterType="com.cug.cs.overseaprojectinformationsystem.dal.entitys.Center">
+        insert into system_center(center_name, address, leader, department, role_ids)
+        values (#{center.centerName}, #{center.address}, #{center.leader}, #{center.department},
+                #{center.roleId,jdbcType=VARCHAR})
+    </insert>
+
+    <select id="selectCenterInfoByCenterId" resultType="com.cug.cs.overseaprojectinformationsystem.dal.entitys.Center">
+        select center_name as centerName, address, leader, department from system_center where id=#{id} and deleted=1
+    </select>
+
+    <update id="updateCenterInfo">
+        update system_center set center_name=#{center.centerName},address=#{center.address},leader=#{center.leader},department=#{center.department},role_id=#{center.roleId}
+        where id=#{center.id} and deleted=1
+    </update>
+
+    <update id="deleteCenterByCenterId">
+        update system_center set deleted=0 where id=#{id}
+    </update>
+</mapper>

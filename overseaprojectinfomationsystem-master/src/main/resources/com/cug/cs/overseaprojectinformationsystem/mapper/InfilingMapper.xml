@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cug.cs.overseaprojectinformationsystem.mapper.InfilingMapper">
+  <resultMap id="BaseResultMap" type="com.cug.cs.overseaprojectinformationsystem.dal.entitys.Infiling">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="oversea_center" jdbcType="VARCHAR" property="overseaCenter" />
+    <result column="counterparty_unit" jdbcType="VARCHAR" property="counterpartyUnit" />
+    <result column="our_unit" jdbcType="VARCHAR" property="ourUnit" />
+    <result column="contract_name" jdbcType="VARCHAR" property="contractName" />
+    <result column="contract_type" jdbcType="INTEGER" property="contractType" />
+    <result column="incontract_source" jdbcType="INTEGER" property="incontractSource" />
+    <result column="workload" jdbcType="DECIMAL" property="workload" />
+    <result column="contract_amount" jdbcType="DECIMAL" property="contractAmount" />
+    <result column="signing_time" jdbcType="DATE" property="signingTime" />
+    <result column="approval_status" jdbcType="INTEGER" property="approvalStatus" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from contract_infiling
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cug.cs.overseaprojectinformationsystem.dal.entitys.Infiling">
+    insert into contract_infiling (oversea_center, counterparty_unit,
+      our_unit, contract_name, contract_type, 
+      incontract_source, workload, contract_amount, 
+      signing_time, approval_status)
+    values (#{overseaCenter,jdbcType=VARCHAR}, #{counterpartyUnit,jdbcType=VARCHAR},
+      #{ourUnit,jdbcType=VARCHAR}, #{contractName,jdbcType=VARCHAR}, #{contractType,jdbcType=INTEGER}, 
+      #{incontractSource,jdbcType=INTEGER}, #{workload,jdbcType=DECIMAL}, #{contractAmount,jdbcType=DECIMAL}, 
+      #{signingTime,jdbcType=DATE}, #{approvalStatus,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cug.cs.overseaprojectinformationsystem.dal.entitys.Infiling">
+    update contract_infiling
+    set oversea_center = #{overseaCenter,jdbcType=VARCHAR},
+      counterparty_unit = #{counterpartyUnit,jdbcType=VARCHAR},
+      our_unit = #{ourUnit,jdbcType=VARCHAR},
+      contract_name = #{contractName,jdbcType=VARCHAR},
+      contract_type = #{contractType,jdbcType=INTEGER},
+      incontract_source = #{incontractSource,jdbcType=INTEGER},
+      workload = #{workload,jdbcType=DECIMAL},
+      contract_amount = #{contractAmount,jdbcType=DECIMAL},
+      signing_time = #{signingTime,jdbcType=DATE},
+      approval_status = #{approvalStatus,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="passStatus" parameterType="java.lang.Integer">
+    update contract_infiling
+    set  approval_status = 2
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="rejectStatus" parameterType="java.lang.Integer">
+    update contract_infiling
+    set  approval_status = 3
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, oversea_center, counterparty_unit, our_unit, contract_name, contract_type, 
+    incontract_source, workload, contract_amount, signing_time, approval_status
+    from contract_infiling
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <!--    分页查询-->
+  <select id="count" resultType="java.lang.Long">
+    select count(*) from contract_infiling
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, oversea_center, counterparty_unit, our_unit, contract_name, contract_type, 
+    incontract_source, workload, contract_amount, signing_time, approval_status
+    from contract_infiling
+  </select>
+</mapper>

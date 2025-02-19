@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--写接口的相对路径，接口里面写需要实现的方法-->
+
+
+<mapper namespace="com.cug.cs.overseaprojectinformationsystem.mapper.EventMapper">
+
+    <resultMap id="eventResultMap" type="com.cug.cs.overseaprojectinformationsystem.dal.entitys.Event">
+        <result property="userId" column="user_id"/>
+        <result property="clientName" column="client_name"/>
+        <result property="orgUnit" column="org_unit"/>
+    </resultMap>
+
+
+<!--    每年各个中心的科技宣讲次数-->
+    <select id="gatSpeechNum" resultType="java.lang.Integer">
+        select count(*) from market_tecpresentation where organizer = #{ name } and end_time between #{startTime} and #{endTime}
+    </select>
+<!--    当月各个中心的访问数量-->
+    <select id="getEventNum" resultType="java.lang.Integer">
+        select count(*) from market_event where org_unit = #{ name } and date between #{startTime} and #{endTime} and way = 1
+    </select>
+<!--    分页查询-->
+    <select id="count" resultType="java.lang.Long">
+        select count(*) from overseaproject.market_event
+    </select>
+    <select id="getAll" resultType="com.cug.cs.overseaprojectinformationsystem.dal.entitys.Event">
+        select * from overseaproject.market_event
+    </select>
+
+    <insert id="add" useGeneratedKeys="true" keyProperty="id">
+        insert into market_event(user_id,client_name, date, org_unit, content, way, location, head, participants, note)
+        value (#{userId}, #{clientName}, #{date}, #{orgUnit}, #{content}, #{way}, #{location}, #{head}, #{participants}, #{note})
+    </insert>
+
+    <update id="update">
+        update market_event
+        set client_name=#{clientName}, date=#{date}, org_unit=#{orgUnit}, content=#{content}, way=#{way}, location=#{location}, head=#{head},participants=#{participants},note=#{note}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        delete from market_event where id = #{id}
+    </delete>
+</mapper>

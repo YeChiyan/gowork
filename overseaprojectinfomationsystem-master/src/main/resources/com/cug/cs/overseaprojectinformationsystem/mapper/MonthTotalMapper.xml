@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--写接口的相对路径，接口里面写需要实现的方法-->
+
+
+<mapper namespace="com.cug.cs.overseaprojectinformationsystem.mapper.MonthTotalMapper">
+
+    <select id="listMonthByReq" resultType="com.cug.cs.overseaprojectinformationsystem.dal.entitys.DayRes">
+        select DATE_FORMAT(sign_date,'%Y/%m') as monthName,
+        sum(contract_amount) as monthMoney
+        from market_newsign
+        where 1=1
+        <if test="startDate != null and endDate != null and startDate != '' and endDate != ''">
+            AND DATE_FORMAT(sign_date, '%Y-%m') BETWEEN DATE_FORMAT(#{startDate}, '%Y-%m') AND DATE_FORMAT(#{endDate},
+            '%Y-%m')
+        </if>
+        <if test="(startDate == null or startDate == '') and endDate != null and endDate != ''">
+            <![CDATA[
+         and DATE_FORMAT(sign_date, '%Y-%m') <= DATE_FORMAT(#{endDate}, '%Y-%m')
+    ]]>
+        </if>
+        <if test="startDate != null and startDate != '' and (endDate == null or endDate == '')">
+            <![CDATA[
+        and DATE_FORMAT(sign_date, '%Y-%m') >= DATE_FORMAT(#{startDate}, '%Y-%m')
+        ]]>
+        </if>
+        group by
+        monthName
+        order by
+        monthName DESC;
+
+    </select>
+
+    
+    <select id="listWinRateByReq" resultType="com.cug.cs.overseaprojectinformationsystem.dal.entitys.WinRateRes">
+        select DATE_FORMAT(date,'%Y/%m') as monthName,
+        convert(sum(eva_dynamics=1)*100/count(*),decimal(10,1)) as winRate
+        from market_bidstatistics
+        where 1=1
+        <if test="startDate != null and endDate != null and startDate != '' and endDate != ''">
+            AND DATE_FORMAT(date, '%Y-%m') BETWEEN DATE_FORMAT(#{startDate}, '%Y-%m') AND DATE_FORMAT(#{endDate},
+            '%Y-%m')
+        </if>
+        <if test="(startDate == null or startDate == '') and endDate != null and endDate != ''">
+            <![CDATA[
+         and DATE_FORMAT(date, '%Y-%m') <= DATE_FORMAT(#{endDate}, '%Y-%m')
+    ]]>
+        </if>
+        <if test="startDate != null and startDate != '' and (endDate == null or endDate == '')">
+            <![CDATA[
+        and DATE_FORMAT(date, '%Y-%m') >= DATE_FORMAT(#{startDate}, '%Y-%m')
+        ]]>
+        </if>
+        group by
+        monthName
+        order by
+        monthName DESC;
+
+    </select>
+
+</mapper>

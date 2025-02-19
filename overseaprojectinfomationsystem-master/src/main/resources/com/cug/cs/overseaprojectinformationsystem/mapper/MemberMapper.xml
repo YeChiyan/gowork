@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--写接口的相对路径，接口里面写需要实现的方法-->
+<mapper namespace="com.cug.cs.overseaprojectinformationsystem.mapper.MemberMapper">
+    <resultMap id="BaseResultMap" type="com.cug.cs.overseaprojectinformationsystem.dal.entitys.Member">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result property="phone" column="user_phone" jdbcType="VARCHAR"/>
+        <result property="sex" column="sex" jdbcType="VARCHAR"/>
+        <result property="centerId" column="center_id" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="department" column="department" jdbcType="VARCHAR"/>
+        <result column="deleted" jdbcType="BIT" property="deleted"/>
+        <result column="role_id" jdbcType="VARCHAR" property="roleId"
+                typeHandler="com.cug.cs.overseaprojectinformationsystem.typehandler.IntegerArrayTypeHandler"/>
+    </resultMap>
+    <select id="selectByUserNameAndPassword" resultMap="BaseResultMap">
+        select id,
+               name,
+               username,
+               password,
+               sex,
+               user_phone ,
+               email,
+               department,
+               center_id  ,
+               role_id
+        from system_user
+        where username = #{username}
+          and password = #{password}
+    </select>
+
+    <select id="selectUserInfoByUserId" resultMap="BaseResultMap">
+        select id,
+               name,
+               username,
+               password,
+               sex,
+               user_phone ,
+               email,
+               department,
+               center_id  ,
+               role_id
+        from system_user
+        where id = #{id}
+          and deleted = 1
+    </select>
+
+    <insert id="insertNewUser" parameterType="com.cug.cs.overseaprojectinformationsystem.dal.entitys.Member">
+        insert into system_user(name, username, password, sex, user_phone, email, department, center_id, role_id,
+                                deleted)
+        values (#{name}, #{username}, #{password}, #{sex}, #{phone}, #{email,jdbcType=VARCHAR}, #{department},
+                #{centerId}, #{roleId,jdbcType=VARCHAR,typeHandler=com.cug.cs.overseaprojectinformationsystem.typehandler.IntegerArrayTypeHandler}, #{deleted})
+    </insert>
+
+    <select id="selectUserList" resultMap="BaseResultMap">
+        select id,
+               name,
+               username,
+               password,
+               sex,
+               user_phone ,
+               email,
+               department,
+               center_id  ,
+               role_id
+        from system_user
+        where deleted = 1
+    </select>
+
+    <select id="selectUserListByCenterId" resultMap="BaseResultMap">
+        select id,
+               name,
+               username,
+               password,
+               sex,
+               user_phone ,
+               email,
+               department,
+               center_id  ,
+               role_id
+        from system_user
+        where centerId = #{centerId}
+          and deleted = 1
+    </select>
+
+    <update id="updateUserInfo">
+        update system_user
+        set name=#{member.name},
+            username=#{member.username},
+            password=#{member.password},
+            sex=#{member.sex},
+            user_phone=#{member.phone},
+            email=#{member.email},
+            department=#{member.department},
+            center_id=#{member.centerId},
+            role_id=#{member.roleId}
+        where id = #{member.id}
+          and deleted = 1
+    </update>
+
+    <update id="deletedUserByUserId">
+        update system_user
+        set deleted=0
+        where id = #{id}
+    </update>
+</mapper>

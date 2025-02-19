@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--写接口的相对路径，接口里面写需要实现的方法-->
+
+
+<mapper namespace="com.cug.cs.overseaprojectinformationsystem.mapper.PresentationMapper">
+
+    <resultMap id="presentationResultMap" type="com.cug.cs.overseaprojectinformationsystem.dal.entitys.Presentation">
+        <result property="userId" column="user_id"/>
+        <result property="preTheme" column="pre_theme"/>
+        <result property="preContent" column="pre_content"/>
+        <result property="preFormat" column="pre_format"/>
+        <result property="prePlace" column="pre_place"/>
+        <result property="comInvolved" column="com_involved"/>
+        <result property="startTime" column="start_time"/>
+        <result property="endTime" column="end_time"/>
+    </resultMap>
+
+    <!--    每年各个中心的科技宣讲次数-->
+    <select id="gatSpeechNum" resultType="java.lang.Integer">
+        select count(*) as total_num from market_tecpresentation where organizer = #{name } and end_time between #{startTime} and #{endTime}
+    </select>
+<!--    分页查询-->
+    <select id="count" resultType="java.lang.Long">
+        select count(*) from overseaproject.market_tecpresentation
+    </select>
+    <select id="getAll" resultType="com.cug.cs.overseaprojectinformationsystem.dal.entitys.Presentation">
+        select * from overseaproject.market_tecpresentation
+    </select>
+
+    <insert id="add" useGeneratedKeys="true" keyProperty="id">
+        insert into market_tecpresentation(user_id,organizer,pre_theme,pre_content,pre_format,pre_place,com_involved,start_time,end_time,staff,note)
+        value (#{userId}, #{organizer}, #{preTheme}, #{preContent}, #{preFormat}, #{prePlace}, #{comInvolved}, #{startTime},#{endTime}, #{staff}, #{note})
+    </insert>
+
+    <update id="update">
+        update market_tecpresentation
+        set organizer=#{organizer}, pre_theme=#{preTheme}, pre_content=#{preContent}, pre_format=#{preFormat}, pre_place=#{prePlace}, com_involved=#{comInvolved}, start_time=#{startTime},end_time=#{endTime},staff=#{staff},note=#{note}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        delete from market_tecpresentation where id = #{id}
+    </delete>
+</mapper>

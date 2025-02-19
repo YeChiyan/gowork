@@ -1,0 +1,16 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: Shirodemo
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/mytest?useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

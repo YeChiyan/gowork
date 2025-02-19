@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--写接口的相对路径，接口里面写需要实现的方法-->
+
+
+<mapper namespace="com.cug.cs.overseaprojectinformationsystem.mapper.BidMapper">
+
+    <resultMap id="bidResultMap" type="com.cug.cs.overseaprojectinformationsystem.dal.entitys.Bid">
+        <result property="userId" column="user_id"/>
+        <result property="projectName" column="project_name"/>
+        <result property="inviteTime" column="invite_time"/>
+        <result property="closeTime" column="close_time"/>
+        <result property="busidateType" column="busidate_type"/>
+        <result property="tenderBody" column="tender_body"/>
+        <result property="tenderMethod" column="tender_method"/>
+        <result property="evaDynamics" column="eva_dynamics"/>
+    </resultMap>
+
+<!--    <select id="getAll" resultMap="bidResultMap" resultType="com.cug.cs.overseaprojectinformationsystem.dal.entitys.Bid">-->
+<!--    select * from market_bidstatistics;-->
+<!--    </select>-->
+
+<!--    统计一年的中标金额-->
+    <select id="getBidMoney" parameterType="string" resultType="java.lang.Double">
+        select sum(market_bidstatistics.amount) AS total_money from market_bidstatistics where date between #{startTime} AND #{endTime} ;
+    </select>
+<!--    统计当月的投标数量-->
+    <select id="getBidNumEachMonth" parameterType="string" resultType="java.lang.Integer" >
+        select count(*) as total_num from market_bidstatistics where invite_time between #{startTime} AND #{endTime} and tender_body= #{name} and tender_method = 1
+    </select>
+<!--    统计近六个月的中标数量-->
+    <select id="getBidNum" parameterType="string" resultType="java.lang.Integer">
+        select count(*) as total_num from market_bidstatistics where eva_dynamics = 1 and date between #{startTime} AND #{endTime};
+    </select>
+    <!--    统计近六个月的评标数量-->
+    <select id="getJudgeBidNum" parameterType="string" resultType="java.lang.Integer">
+        select count(eva_dynamics) as total_num from market_bidstatistics where close_time between #{startTime} AND #{endTime};
+    </select>
+<!--    统计所有标量-->
+    <select id="getAllBidNum" parameterType="string" resultType="java.lang.Integer">
+        select count(*) as total_num from market_bidstatistics where close_time between #{startTime} AND #{endTime};
+    </select>
+
+<!--    分页查询-->
+    <select id="count" resultType="java.lang.Long">
+        select count(*) from overseaproject.market_bidstatistics
+    </select>
+    <select id="getAll" resultType="com.cug.cs.overseaprojectinformationsystem.dal.entitys.Bid">
+        select * from overseaproject.market_bidstatistics
+    </select>
+
+
+    <insert id="add" useGeneratedKeys="true" keyProperty="id">
+        insert into market_bidstatistics(user_id,area,country,lessor,project_name,invite_time,close_time,busidate_type,tender_body,support,tender_method,eva_dynamics,date,reason,amount,workload,univalent,prive,integration,note)
+        value (#{userId}, #{area}, #{country}, #{lessor}, #{projectName}, #{inviteTime}, #{closeTime}, #{busidateType}, #{tenderBody}, #{support},#{tenderMethod},#{evaDynamics},#{date},#{reason},#{amount},#{workload},#{univalent},#{prive},#{integration},#{note})
+    </insert>
+
+    <update id="update">
+        update market_bidstatistics
+        <set>
+            <if test="area!=null">area=#{area},</if>
+            <if test="country!=null">country=#{country},</if>
+            <if test="lessor!=null">lessor=#{lessor},</if>
+            <if test="projectName!=null">project_name=#{projectName},</if>
+            <if test="inviteTime!=null">invite_time=#{inviteTime},</if>
+            <if test="closeTime!=null">close_time=#{closeTime},</if>
+            <if test="busidateType!=null">busidate_type=#{busidateType},</if>
+            <if test="tenderBody!=null">tender_body=#{tenderBody},</if>
+            <if test="support!=null">support=#{support},</if>
+            <if test="tenderMethod!=null">tender_method=#{tenderMethod},</if>
+            <if test="evaDynamics!=null">eva_dynamics=#{evaDynamics},</if>
+            <if test="date!=null">date=#{date},</if>
+            <if test="reason!=null">reason=#{reason},</if>
+            <if test="amount!=null">amount=#{amount},</if>
+            <if test="workload!=null">workload=#{workload},</if>
+            <if test="univalent!=null">univalent=#{univalent},</if>
+            <if test="prive!=null">prive=#{prive},</if>
+            <if test="integration!=null">integration=#{integration},</if>
+            <if test="note!=null">note=#{note}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        delete from market_bidstatistics where id = #{id}
+    </delete>
+</mapper>

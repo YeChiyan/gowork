@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--写接口的相对路径，接口里面写需要实现的方法-->
+
+
+<mapper namespace="com.cug.cs.overseaprojectinformationsystem.mapper.NewSignMapper">
+
+    <resultMap id="newsignResultMap" type="com.cug.cs.overseaprojectinformationsystem.dal.entitys.NewSign">
+        <result property="userId" column="user_id"/>
+        <result property="workareaName" column="workarea_name"/>
+        <result property="ourCompany" column="our_company"/>
+        <result property="signatoryName" column="signatory_name"/>
+        <result property="projectName" column="project_name"/>
+        <result property="contractNum" column="contract_num"/>
+        <result property="workNature" column="work_nature"/>
+        <result property="surfaceType" column="surface_type"/>
+        <result property="workload_2d" column="workload_2D"/>
+        <result property="workload_3d" column="workload_3D"/>
+        <result property="contractAmount" column="contract_amount"/>
+        <result property="signDate" column="sign_date"/>
+        <result property="closeDate" column="close_date"/>
+    </resultMap>
+
+
+    <!--    获得每月新签市场的合同额-->
+    <select id="getNewSignMoney" parameterType="string" resultType="java.lang.Double">
+        select sum(market_newsign.contract_amount) AS total_money from overseaproject.market_newsign where market_newsign.sign_date between #{startTime} AND #{endTime} ;
+    </select>
+<!--    分页查询-->
+    <select id="count" resultType="java.lang.Long">
+        select count(*) from overseaproject.market_newsign
+    </select>
+    <select id="getAll" resultMap="newsignResultMap">
+        select * from overseaproject.market_newsign
+    </select>
+
+    <!--    获得工作量km-->
+    <select id="get2d" resultType="java.math.BigDecimal">
+        select workload_2D from overseaproject.market_newsign where contract_num = #{contractNum}
+    </select>
+    <!--    获得工作量sqkm-->
+    <select id="get3d" resultType="java.math.BigDecimal">
+        select workload_3D from overseaproject.market_newsign where contract_num = #{contractNum}
+    </select>
+
+<!--添加数据-->
+    <insert id="add" useGeneratedKeys="true" keyProperty="id">
+        insert into market_newsign(user_id,area,country,workarea_name,lessor,our_company,signatory_name,project_name,contract_num,work_nature,integration,surface_type,pstm,psdm,workload_2D,workload_3D,contract_amount,sign_date,close_date,note)
+        value (#{userId}, #{area}, #{country}, #{workareaName},#{lessor}, #{ourCompany}, #{signatoryName}, #{projectName}, #{contractNum}, #{workNature}, #{integration}, #{surfaceType}, #{pstm},#{psdm},#{workload_2d},#{workload_3d},#{contractAmount},#{signDate},#{closeDate},#{note})
+    </insert>
+
+    <update id="update">
+        update market_newsign
+        set area=#{area}, country=#{country},workarea_name= #{workAreaName},lessor=#{lessor},our_company=#{ourCompany},signatory_name=#{signatoryName},project_name=#{projectName},contract_num=#{contractNum},work_nature=#{workNature},integration=#{integration},surface_type=#{surfaceType},pstm=#{pstm},psdm=#{psdm},workload_2D=#{workload_2d},workload_3D=#{workload_3d},contract_amount=#{contractAmount},sign_date=#{signDate},close_date=#{closeDate},note=#{note}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        delete from market_newsign where id = #{id}
+    </delete>
+
+    <!--按各个分中心查询-->
+    <select id="selectByCenter" resultMap="newsignResultMap">
+    select id,user_id,area,country,workarea_name,lessor,our_company,signatory_name,project_name,contract_num,work_nature,integration,surface_type,pstm,psdm,workload_2D,workload_3D,contract_amount,sign_date,close_date,note
+    from market_newsign
+    where our_company = #{name}
+    </select>
+
+    <select id="countByCenter" resultType="java.lang.Long">
+        select count(1) from market_newsign
+        where our_company = #{name}
+    </select>
+</mapper>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cug.cs.overseaprojectinformationsystem.mapper.ManageMapper">
+  <resultMap id="BaseResultMap" type="com.cug.cs.overseaprojectinformationsystem.dal.entitys.Manage">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="lessor" jdbcType="VARCHAR" property="lessor" />
+    <result column="contract_num" jdbcType="INTEGER" property="contractNum" />
+    <result column="our_company" jdbcType="VARCHAR" property="ourCompany" />
+    <result column="our_signatory" jdbcType="VARCHAR" property="ourSignatory" />
+    <result column="project_name" jdbcType="VARCHAR" property="projectName" />
+    <result column="work_nature" jdbcType="INTEGER" property="workNature" />
+    <result column="integration" jdbcType="INTEGER" property="integration" />
+    <result column="contract_amount" jdbcType="DECIMAL" property="contractAmount" />
+    <result column="sign_time" jdbcType="DATE" property="signTime" />
+    <result column="start_time" jdbcType="DATE" property="startTime" />
+    <result column="end_time" jdbcType="DATE" property="endTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from contract_manage
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cug.cs.overseaprojectinformationsystem.dal.entitys.Manage">
+    insert into contract_manage (lessor, contract_num,
+      our_company, our_signatory, project_name, 
+      work_nature, integration, contract_amount, 
+      sign_time, start_time, end_time
+      )
+    values (#{lessor,jdbcType=VARCHAR}, #{contractNum,jdbcType=INTEGER},
+      #{ourCompany,jdbcType=VARCHAR}, #{ourSignatory,jdbcType=VARCHAR}, #{projectName,jdbcType=VARCHAR}, 
+      #{workNature,jdbcType=INTEGER}, #{integration,jdbcType=INTEGER}, #{contractAmount,jdbcType=DECIMAL}, 
+      #{signTime,jdbcType=DATE}, #{startTime,jdbcType=DATE}, #{endTime,jdbcType=DATE}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cug.cs.overseaprojectinformationsystem.dal.entitys.Manage">
+    update contract_manage
+    set lessor = #{lessor,jdbcType=VARCHAR},
+      contract_num = #{contractNum,jdbcType=INTEGER},
+      our_company = #{ourCompany,jdbcType=VARCHAR},
+      our_signatory = #{ourSignatory,jdbcType=VARCHAR},
+      project_name = #{projectName,jdbcType=VARCHAR},
+      work_nature = #{workNature,jdbcType=INTEGER},
+      integration = #{integration,jdbcType=INTEGER},
+      contract_amount = #{contractAmount,jdbcType=DECIMAL},
+      sign_time = #{signTime,jdbcType=DATE},
+      start_time = #{startTime,jdbcType=DATE},
+      end_time = #{endTime,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, lessor, contract_num, our_company, our_signatory, project_name, work_nature, 
+    integration, contract_amount, sign_time, start_time, end_time
+    from contract_manage
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <!--    分页查询-->
+  <select id="count" resultType="java.lang.Long">
+    select count(*) from contract_manage
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, lessor, contract_num, our_company, our_signatory, project_name, work_nature, 
+    integration, contract_amount, sign_time, start_time, end_time
+    from contract_manage
+  </select>
+</mapper>

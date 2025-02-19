@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cug.cs.overseaprojectinformationsystem.mapper.PotproMapper">
+
+
+    <!--插入潜在项目信息-->
+    <insert id="addPotproject">
+    insert into market_potproject(user_id, center_name, project_name, country, client_name, workload_km, workload_sqkm, contract, con_type, fulfil_extent, imp_active)
+    Values (#{userId},#{centerName},#{projectName},#{country},#{clientName},#{workloadKm},#{workloadSqkm},#{contract},#{conType},#{fulfilExtent},#{impActive})
+    </insert>
+
+<!--    更新项目信息-->
+    <update id="updatePotproject">
+        update market_potproject
+        <set>
+        <if test="userId!=null">user_id = #{userId},</if>
+        <if test="centerName!=null">center_name=#{centerName},</if>
+        <if test="projectName!=null">project_name=#{projectName},</if>
+        <if test="country!=null">country=#{country},</if>
+        <if test="clientName!=null">client_name=#{clientName},</if>
+        <if test="workloadKm!=null">workload_km=#{workloadKm},</if>
+        <if test="workloadSqkm!=null">workload_sqkm=#{workloadSqkm},</if>
+        <if test="contract!=null">contract=#{contract},</if>
+        <if test="conType!=null">con_type=#{conType},</if>
+        <if test="fulfilExtent!=null">fulfil_extent=#{fulfilExtent},</if>
+        <if test="impActive!=null">imp_active=#{impActive}</if>
+        </set>
+        where project_id = #{projectId}
+    </update>
+
+<!--    批量删除项目信息-->
+    <delete id="deletePotproject">
+        delete from market_potproject where project_id in
+        <foreach collection="projectIds" item="projectId" open="(" close=")" separator=",">
+            #{projectId}
+        </foreach>
+    </delete>
+
+    <delete id="deletePotproject1">
+        delete from overseaproject.market_potproject where market_potproject.project_id =#{projectId}
+    </delete>
+    <delete id="deleteByPrimaryKey">
+        delete from market_potproject
+        where project_id =#{projectId}
+    </delete>
+
+<!--    分页查询潜在项目信息-->
+    <select id="count" resultType="java.lang.Long">
+        select count(*) from market_potproject;
+    </select>
+    <select id="selectPotproject"
+            resultType="com.cug.cs.overseaprojectinformationsystem.dal.entitys.PotProject">
+        select * from market_potproject
+    </select>
+<!--    获得潜在项目数量-->
+    <select id="getPotNum" resultType="java.lang.Integer">
+        select count(*) from market_potproject
+        where center_name = #{name}
+          and fulfil_extent
+        in ('持续跟踪','较大','潜力','有机会','一般','牢靠','较牢靠','落实','落标')
+    </select>
+<!--    潜在项目金额-->
+    <select id="getPotMoney" resultType="java.lang.Double">
+        select sum(market_potproject.contract) as total_money from overseaproject.market_potproject where market_potproject.center_name = #{name}
+    </select>
+</mapper>

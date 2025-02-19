@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cug.cs.overseaprojectinformationsystem.mapper.MarketConditionsMapper">
+  <resultMap id="BaseResultMap" type="com.cug.cs.overseaprojectinformationsystem.dal.entitys.MarketConditions">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="oversea_center" jdbcType="VARCHAR" property="overseaCenter" />
+    <result column="annual_metrics" jdbcType="INTEGER" property="annualMetrics" />
+    <result column="time_schedule" jdbcType="INTEGER" property="timeSchedule" />
+    <result column="done" jdbcType="DECIMAL" property="done" />
+    <result column="last_year" jdbcType="INTEGER" property="lastYear" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cockpit_newsign
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cug.cs.overseaprojectinformationsystem.dal.entitys.MarketConditions">
+    insert into cockpit_newsign (id, oversea_center, annual_metrics,
+      time_schedule, done, last_year
+      )
+    values (#{id,jdbcType=INTEGER}, #{overseaCenter,jdbcType=VARCHAR}, #{annualMetrics,jdbcType=INTEGER},
+      #{timeSchedule,jdbcType=INTEGER}, #{done,jdbcType=DECIMAL}, #{lastYear,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cug.cs.overseaprojectinformationsystem.dal.entitys.MarketConditions">
+    update cockpit_newsign
+    set oversea_center = #{overseaCenter,jdbcType=VARCHAR},
+      annual_metrics = #{annualMetrics,jdbcType=INTEGER},
+      time_schedule = #{timeSchedule,jdbcType=INTEGER},
+      done = #{done,jdbcType=DECIMAL},
+      last_year = #{lastYear,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, oversea_center, annual_metrics, time_schedule, done, last_year
+    from cockpit_newsign
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <!--    分页查询-->
+  <select id="count" resultType="java.lang.Long">
+    select count(*) from cockpit_newsign
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, oversea_center, annual_metrics, time_schedule, done, last_year
+    from cockpit_newsign
+  </select>
+  <select id="getOverseaCenter" resultType="java.lang.String">
+    select oversea_center from cockpit_newsign
+  </select>
+  <select id="getAnnualMetrics" resultType="java.lang.Integer">
+    select annual_metrics from cockpit_newsign where oversea_center = #{name}
+  </select>
+  <select id="getTimeSchedule" resultType="java.lang.Integer">
+    select time_schedule from cockpit_newsign where oversea_center = #{name}
+  </select>
+  <select id="getDone" resultType="decimal">
+    select done from cockpit_newsign where oversea_center = #{name}
+  </select>
+  <select id="getLastYear" resultType="java.lang.Integer">
+    select last_year from cockpit_newsign where oversea_center = #{name}
+  </select>
+
+</mapper>

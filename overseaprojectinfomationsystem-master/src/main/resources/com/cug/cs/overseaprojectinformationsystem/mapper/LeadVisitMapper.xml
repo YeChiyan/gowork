@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cug.cs.overseaprojectinformationsystem.mapper.LeadVisitMapper">
+  <resultMap id="BaseResultMap" type="com.cug.cs.overseaprojectinformationsystem.dal.entitys.LeadVisit">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="start_date" jdbcType="DATE" property="startDate" />
+    <result column="end_date" jdbcType="DATE" property="endDate" />
+    <result column="expert" jdbcType="VARCHAR" property="expert" />
+    <result column="leader" jdbcType="VARCHAR" property="leader" />
+    <result column="follow_people" jdbcType="VARCHAR" property="followPeople" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="task" jdbcType="VARCHAR" property="task" />
+    <result column="locus" jdbcType="VARCHAR" property="locus" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cockpit_leadvisit
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cug.cs.overseaprojectinformationsystem.dal.entitys.LeadVisit">
+    insert into cockpit_leadvisit (id, start_date, end_date, 
+      expert, leader, follow_people, 
+      area, task, locus, 
+      note)
+    values (#{id,jdbcType=INTEGER}, #{startDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, 
+      #{expert,jdbcType=VARCHAR}, #{leader,jdbcType=VARCHAR}, #{followPeople,jdbcType=VARCHAR}, 
+      #{area,jdbcType=VARCHAR}, #{task,jdbcType=VARCHAR}, #{locus,jdbcType=VARCHAR}, 
+      #{note,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cug.cs.overseaprojectinformationsystem.dal.entitys.LeadVisit">
+    update cockpit_leadvisit
+    set start_date = #{startDate,jdbcType=DATE},
+      end_date = #{endDate,jdbcType=DATE},
+      expert = #{expert,jdbcType=VARCHAR},
+      leader = #{leader,jdbcType=VARCHAR},
+      follow_people = #{followPeople,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      task = #{task,jdbcType=VARCHAR},
+      locus = #{locus,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, start_date, end_date, expert, leader, follow_people, area, task, locus, 
+    note
+    from cockpit_leadvisit
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+      <!--    分页查询-->
+  <select id="count" resultType="java.lang.Long">
+        select count(*) from cockpit_leadvisit
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, start_date, end_date, expert, leader, follow_people, area, task, locus, 
+    note
+    from cockpit_leadvisit
+  </select>
+
+  <!--按关键字模糊匹配-->
+  <select id="selectByKey"  resultMap="BaseResultMap">
+    select id, start_date, end_date, expert, leader, follow_people, area, task, locus, note
+    from cockpit_leadvisit
+    where concat(start_date,end_date,expert,leader,follow_people,area,task,locus,note) like '%${key}%'
+  </select>
+  <select id="countByKey" resultType="java.lang.Long">
+    select count(1) from cockpit_leadvisit
+    where concat(start_date,end_date,expert,leader,follow_people,area,task,locus,note) like '%${key}%'
+  </select>
+</mapper>
