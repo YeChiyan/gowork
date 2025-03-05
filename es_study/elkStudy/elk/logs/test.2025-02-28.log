@@ -1,0 +1,95 @@
+2025-02-28 14:53:09.257 [main] INFO  com.elk.ElkApplication - Starting ElkApplication using Java 1.8.0_431 on tq7.local with PID 32436 (/Users/apple/Desktop/gowork/es_study/elkStudy/elk/target/classes started by apple in /Users/apple/Desktop/gowork/es_study/elkStudy/elk)
+2025-02-28 14:53:09.259 [main] INFO  com.elk.ElkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-02-28 14:53:09.497 [main] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.elk.mapper]' package. Please check your configuration.
+2025-02-28 14:53:09.612 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-02-28 14:53:09.615 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-02-28 14:53:09.616 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-02-28 14:53:09.616 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+2025-02-28 14:53:09.666 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-02-28 14:53:09.666 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 388 ms
+2025-02-28 14:53:09.732 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-02-28 14:53:09.755 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 4 mappings in 'requestMappingHandlerMapping'
+2025-02-28 14:53:09.763 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-02-28 14:53:09.766 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-02-28 14:53:10.000 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-02-28 14:53:10.010 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-02-28 14:53:10.015 [main] INFO  com.elk.ElkApplication - Started ElkApplication in 0.925 seconds (JVM running for 1.152)
+2025-02-28 14:59:31.791 [main] INFO  com.elk.ElkApplication - Starting ElkApplication using Java 1.8.0_431 on tq7.local with PID 36249 (/Users/apple/Desktop/gowork/es_study/elkStudy/elk/target/classes started by apple in /Users/apple/Desktop/gowork/es_study/elkStudy/elk)
+2025-02-28 14:59:31.792 [main] INFO  com.elk.ElkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-02-28 14:59:32.031 [main] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.elk.mapper]' package. Please check your configuration.
+2025-02-28 14:59:32.135 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-02-28 14:59:32.138 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-02-28 14:59:32.138 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-02-28 14:59:32.138 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+2025-02-28 14:59:32.196 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-02-28 14:59:32.196 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 384 ms
+2025-02-28 14:59:32.259 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-02-28 14:59:32.282 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 4 mappings in 'requestMappingHandlerMapping'
+2025-02-28 14:59:32.290 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-02-28 14:59:32.293 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-02-28 14:59:32.495 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-02-28 14:59:32.503 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-02-28 14:59:32.507 [main] INFO  com.elk.ElkApplication - Started ElkApplication in 0.874 seconds (JVM running for 1.067)
+2025-02-28 15:00:45.721 [main] INFO  com.elk.ElkApplication - Starting ElkApplication using Java 1.8.0_431 on tq7.local with PID 36959 (/Users/apple/Desktop/gowork/es_study/elkStudy/elk/target/classes started by apple in /Users/apple/Desktop/gowork/es_study/elkStudy/elk)
+2025-02-28 15:00:45.723 [main] INFO  com.elk.ElkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-02-28 15:00:45.969 [main] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.elk.mapper]' package. Please check your configuration.
+2025-02-28 15:00:46.075 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-02-28 15:00:46.077 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-02-28 15:00:46.077 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-02-28 15:00:46.077 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+2025-02-28 15:00:46.127 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-02-28 15:00:46.128 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 387 ms
+2025-02-28 15:00:46.188 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-02-28 15:00:46.210 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 4 mappings in 'requestMappingHandlerMapping'
+2025-02-28 15:00:46.218 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-02-28 15:00:46.221 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-02-28 15:00:46.433 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-02-28 15:00:46.442 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-02-28 15:00:46.447 [main] INFO  com.elk.ElkApplication - Started ElkApplication in 0.932 seconds (JVM running for 1.107)
+2025-02-28 15:00:59.172 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-28 15:00:59.172 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-02-28 15:00:59.172 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2025-02-28 15:00:59.172 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2025-02-28 15:00:59.172 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2025-02-28 15:00:59.173 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@77dbf0e
+2025-02-28 15:00:59.173 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@5261aee8
+2025-02-28 15:00:59.173 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-02-28 15:00:59.173 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-02-28 15:00:59.178 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/auth", parameters={}
+2025-02-28 15:00:59.181 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.elk.controller.AuthController#test()
+2025-02-28 15:00:59.184 [http-nio-8080-exec-1] INFO  com.elk.controller.AuthController - hello
+2025-02-28 15:00:59.189 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'text/html', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json, application/x-jackson-smile, application/cbor]
+2025-02-28 15:00:59.190 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing ["success"]
+2025-02-28 15:00:59.193 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2025-02-28 15:28:22.146 [main] INFO  com.elk.ElkApplication - Starting ElkApplication using Java 1.8.0_431 on tq7.local with PID 53231 (/Users/apple/Desktop/gowork/es_study/elkStudy/elk/target/classes started by apple in /Users/apple/Desktop/gowork/es_study/elkStudy/elk)
+2025-02-28 15:28:22.148 [main] INFO  com.elk.ElkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-02-28 15:28:22.454 [main] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.elk.mapper]' package. Please check your configuration.
+2025-02-28 15:28:22.572 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-02-28 15:28:22.575 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-02-28 15:28:22.575 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-02-28 15:28:22.575 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+2025-02-28 15:28:22.629 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-02-28 15:28:22.629 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 464 ms
+2025-02-28 15:28:22.704 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-02-28 15:28:22.730 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 4 mappings in 'requestMappingHandlerMapping'
+2025-02-28 15:28:22.738 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-02-28 15:28:22.742 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-02-28 15:28:22.988 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-02-28 15:28:22.997 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-02-28 15:28:23.001 [main] INFO  com.elk.ElkApplication - Started ElkApplication in 1.022 seconds (JVM running for 1.272)
+2025-02-28 15:29:38.751 [main] INFO  com.elk.ElkApplication - Starting ElkApplication using Java 1.8.0_431 on tq7.local with PID 53985 (/Users/apple/Desktop/gowork/es_study/elkStudy/elk/target/classes started by apple in /Users/apple/Desktop/gowork/es_study/elkStudy/elk)
+2025-02-28 15:29:38.752 [main] INFO  com.elk.ElkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-02-28 15:29:39.327 [main] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.elk.mapper]' package. Please check your configuration.
+2025-02-28 15:29:39.608 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-02-28 15:29:39.621 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-02-28 15:29:39.622 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-02-28 15:29:39.622 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+2025-02-28 15:29:39.745 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-02-28 15:29:39.746 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 929 ms
+2025-02-28 15:29:39.940 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-02-28 15:29:39.985 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 4 mappings in 'requestMappingHandlerMapping'
+2025-02-28 15:29:40.000 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-02-28 15:29:40.004 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-02-28 15:29:40.707 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-02-28 15:29:40.727 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-02-28 15:29:40.744 [main] INFO  com.elk.ElkApplication - Started ElkApplication in 2.59 seconds (JVM running for 3.206)

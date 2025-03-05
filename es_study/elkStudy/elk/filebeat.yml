@@ -1,0 +1,4 @@
+filebeat.inputs:
+- type: log
+  paths:
+    - /path/to/your/logs/test-log/*.log 
