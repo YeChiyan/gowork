@@ -1,0 +1,26 @@
+{
+  "settings": {
+    "number_of_shards": 3,
+    "number_of_replicas": 1
+  },
+  "mappings": {
+    "properties": {
+      "id": { "type": "long" },
+      "username": { "type": "keyword" },
+      "password": { "type": "keyword" },
+      "nickname": {
+        "type": "text",
+        "fields": {
+          "keyword": { "type": "keyword" }
+        }
+      },
+      "birthday": {
+        "type": "date",
+        "format": "yyyy-MM-dd"
+      },
+      "phone": { "type": "keyword" },
+      "icon": { "type": "keyword" },
+      "gender": { "type": "integer" }
+    }
+  }
+} 
